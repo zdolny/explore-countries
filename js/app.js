@@ -3,7 +3,8 @@ var app = (function() {
     var url = 'https://restcountries.eu/rest/v1/name/';
     var countriesList = {};
     
-    var searchCountries = function() {
+    var searchCountries = function(e) {
+        e.preventDefault();
         var countryName = $('#country-name').val();
         if(!countryName.length) countryName = 'Poland';
         $.ajax({
@@ -23,15 +24,17 @@ var app = (function() {
     var initModule = function ( $container ) {
         $container.html(
             '<h1>Explore Countries</h1>'
+            + '<form id="search">'
             + '<input id="country-name" type="text" />'
-            + '<button id="search">Search</button>' 
+            + '<button type="submit">Search</button>' 
+            + '</form>'
             + '<h2>Countries list</h2>' 
             + '<ul id="countries">' 
             + '<li>No data</li>' 
             + '</ul>'
         );
         countriesList = $('#countries');
-        $('#search').click(searchCountries);
+        $('#search').on('submit', searchCountries);
     };
     
     return {
