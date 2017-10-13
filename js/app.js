@@ -16,22 +16,28 @@ var app = (function() {
     var showCountriesList = function(resp) {
         countriesList.empty();
         resp.forEach(function(item) {
-            $('<li>').text(item.name).appendTo(countriesList);
-            $('<li>').text(item.capital).appendTo(countriesList);
-            $('<img>').attr('src', 'https://flagpedia.net/data/flags/normal/' + item.alpha2Code.toLowerCase() + '.png').appendTo(countriesList);
+            $('<li class="countries-list__list-item">').text(item.name)
+            .append($('<ul>')
+            .append($('<li>').text(item.capital))
+            .append($('<li>').append($('<img class="country__img">').attr('src', 'https://flagpedia.net/data/flags/normal/' + item.alpha2Code.toLowerCase() + '.png'))))
+            .appendTo(countriesList);
         });
     }
     var initModule = function ( $container ) {
         $container.html(
-            '<h1>Explore Countries</h1>'
-            + '<form id="search">'
-            + '<input id="country-name" type="text" />'
-            + '<button type="submit">Search</button>' 
+            '<div class="app">'
+            + '<h1 class="app__title">Explore Countries</h1>'
+            + '<form id="search" class="search">'
+            + '<input id="country-name" class="search__input" type="text" />'
+            + '<button class="search__button" type="submit">Search</button>' 
             + '</form>'
-            + '<h2>Countries list</h2>' 
-            + '<ul id="countries">' 
-            + '<li>No data</li>' 
+            + '<div class="countries-list">'
+            + '<h2 class="countries-list__title">Countries list</h2>' 
+            + '<ul id="countries" class="countries-list__list">' 
+            + '<li class="countries-list__list-item countries-list__list-item--is-empty">No data</li>' 
             + '</ul>'
+            + '</div>'
+            + '</div>'
         );
         countriesList = $('#countries');
         $('#search').on('submit', searchCountries);

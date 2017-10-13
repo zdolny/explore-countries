@@ -1,0 +1,40 @@
+.app {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.app__title {
+  font-family: sans-serif;
+}
+.search {
+  font-family: sans-serif;
+}
+.search__input {
+
+}
+.search__button {
+
+}
+.countries-list {
+  font-family: sans-serif;
+  text-align: center;
+}
+.countries-list__title {
+
+}
+.countries-list__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.countries-list__list-item {
+  padding: 15px;
+  border: 1px solid green;
+}
+.countries-list__list-item--is-empty {
+  border: none;
+}
+.country__img {
+  border: 1px solid #ccc;
+}
