@@ -21,7 +21,7 @@ var app = (function() {
             .append($('<li>').text('Capital: ' + item.capital))
             .append($('<li>').text('Area: ' + item.area + 'km2'))
             .append($('<li>').text('Population: ' + item.population))
-            .append($('<li>').append($('<img class="country__img">').attr('src', 'https://flagpedia.net/data/flags/normal/' + item.alpha2Code.toLowerCase() + '.png'))))
+            .append($('<li>').append($('<img class="country__img">').attr('src', 'https://restcountries.eu/data/' + item.alpha3Code.toLowerCase() + '.svg'))))
             .appendTo(countriesList);
         });
     }
