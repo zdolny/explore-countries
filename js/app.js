@@ -18,7 +18,9 @@ var app = (function() {
         resp.forEach(function(item) {
             $('<li class="countries-list__list-item">').text(item.name)
             .append($('<ul>')
-            .append($('<li>').text(item.capital))
+            .append($('<li>').text('Capital: ' + item.capital))
+            .append($('<li>').text('Area: ' + item.area + 'km2'))
+            .append($('<li>').text('Population: ' + item.population))
             .append($('<li>').append($('<img class="country__img">').attr('src', 'https://flagpedia.net/data/flags/normal/' + item.alpha2Code.toLowerCase() + '.png'))))
             .appendTo(countriesList);
         });
