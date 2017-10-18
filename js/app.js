@@ -18,6 +18,7 @@ var app = (function () { // eslint-disable-line no-unused-vars
     request.send()
   }
   var showCountriesList = function (resp) {
+    countriesList.innerHTML = ''
     var dataArray = JSON.parse(resp)
     for (var i = 0; i < dataArray.length; i++) {
       var name = document.createElement('li')
@@ -28,10 +29,10 @@ var app = (function () { // eslint-disable-line no-unused-vars
       capital.innerHTML = 'Capital: ' + dataArray[i].capital
 
       var area = document.createElement('li')
-      area.innerHTML = 'Area: ' + dataArray[i].area + 'km2'
+      area.innerHTML = 'Area: ' + dataArray[i].area.toLocaleString('pl-PL') + ' km&#178;'
 
       var population = document.createElement('li')
-      population.innerHTML = 'Population: ' + dataArray[i].population
+      population.innerHTML = 'Population: ' + dataArray[i].population.toLocaleString('pl-PL')
 
       var flag = document.createElement('li')
       var flagImg = document.createElement('img')

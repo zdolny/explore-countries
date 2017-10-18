@@ -37,4 +37,5 @@
 }
 .country__img {
   border: 1px solid #ccc;
+  width: calc(100% - 2px);
 }
