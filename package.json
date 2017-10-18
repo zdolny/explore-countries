@@ -1,0 +1,16 @@
+{
+  "name": "explore-countries",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "standard --plugin html '**/*.html'"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "globals": [ "app" ],
+    "env": {
+      "browser": 1
+    }
+  }
+}

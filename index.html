@@ -6,17 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/app.css" type="text/css">
   <script src="js/app.js"></script>
-  <script>
-    (function(callback) {
-      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
-        callback();
-      } else {
-        document.addEventListener('DOMContentLoaded', callback);
-      }
-    })(function(){
-      app.initModule( document.getElementById('app') );
-    });
-  </script>
+  <script src="js/index.js"></script>
 </head>
 <body>
   <div id="app"></div>
