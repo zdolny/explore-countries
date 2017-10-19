@@ -7,19 +7,15 @@ var app = (function () { // eslint-disable-line no-unused-vars
     var countryName = document.getElementById('country-name').value
     if (!countryName.length) countryName = 'Poland'
 
-    var request = new XMLHttpRequest()
-    request.open('GET', url + countryName, true)
-    request.onload = function () {
-      if (this.status >= 200 && this.status < 400) {
-        var resp = this.response
-        showCountriesList(resp)
-      }
-    }
-    request.send()
+    fetch(url + countryName).then(function (response) {
+      return (response.json())
+    }).then(function (response) {
+      showCountriesList(response)
+    })
   }
-  var showCountriesList = function (resp) {
+  var showCountriesList = function (response) {
     countriesList.innerHTML = ''
-    var dataArray = JSON.parse(resp)
+    var dataArray = response
     for (var i = 0; i < dataArray.length; i++) {
       var name = document.createElement('li')
       name.setAttribute('class', 'countries-list__list-item')
