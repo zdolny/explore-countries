@@ -1,4 +1,6 @@
 var app = (function () { // eslint-disable-line no-unused-vars
+  'use strict'
+
   var url = 'https://restcountries.eu/rest/v1/name/'
   var countriesList = {}
 
@@ -7,11 +9,19 @@ var app = (function () { // eslint-disable-line no-unused-vars
     var countryName = document.getElementById('country-name').value
     if (!countryName.length) countryName = 'Poland'
 
-    fetch(url + countryName).then(function (response) {
+    fetch(url + countryName).then(handleErrors).then(function (response) {
       return (response.json())
     }).then(function (response) {
       showCountriesList(response)
+    }).catch(function (error) {
+      console.log(error)
     })
+  }
+  var handleErrors = function (response) {
+    if (!response.ok) {
+      throw Error(response.statusText)
+    }
+    return response
   }
   var showCountriesList = function (response) {
     countriesList.innerHTML = ''
