@@ -13,8 +13,8 @@ var app = (function () { // eslint-disable-line no-unused-vars
       return (response.json())
     }).then(function (response) {
       showCountriesList(response)
-    }).catch(function (error) {
-      console.log(error)
+    }).catch(function () {
+      updateUIFailure()
     })
   }
   var handleErrors = function (response) {
@@ -22,6 +22,11 @@ var app = (function () { // eslint-disable-line no-unused-vars
       throw Error(response.statusText)
     }
     return response
+  }
+  var updateUIFailure = function () {
+    var elError = document.createElement('li')
+    elError.textContent = 'Information unavailable'
+    countriesList.appendChild(elError)
   }
   var showCountriesList = function (response) {
     countriesList.innerHTML = ''
