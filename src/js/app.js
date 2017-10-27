@@ -34,21 +34,22 @@ var app = (function () { // eslint-disable-line no-unused-vars
     for (var i = 0; i < dataArray.length; i++) {
       var name = document.createElement('li')
       name.setAttribute('class', 'countries-list__list-item')
-      name.innerHTML = dataArray[i].name
+      name.textContent = dataArray[i].name
 
       var capital = document.createElement('li')
-      capital.innerHTML = 'Capital: ' + dataArray[i].capital
+      capital.textContent = 'Capital: ' + dataArray[i].capital
 
       var area = document.createElement('li')
-      area.innerHTML = 'Area: ' + dataArray[i].area.toLocaleString('pl-PL') + ' km&#178;'
+      area.textContent = 'Area: ' + dataArray[i].area.toLocaleString('pl-PL') + ' km\u00B2'
 
       var population = document.createElement('li')
-      population.innerHTML = 'Population: ' + dataArray[i].population.toLocaleString('pl-PL')
+      population.textContent = 'Population: ' + dataArray[i].population.toLocaleString('pl-PL')
 
       var flag = document.createElement('li')
       var flagImg = document.createElement('img')
       flagImg.setAttribute('class', 'country__img')
       flagImg.setAttribute('src', 'https://restcountries.eu/data/' + dataArray[i].alpha3Code.toLowerCase() + '.svg')
+      flagImg.setAttribute('alt','')
       flag.appendChild(flagImg)
 
       var countryData = document.createElement('ul')
