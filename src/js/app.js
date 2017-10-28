@@ -14,7 +14,7 @@ var app = (function () { // eslint-disable-line no-unused-vars
     }).then(function (response) {
       showCountriesList(response)
     }).catch(function () {
-      updateUIFailure()
+      updateUIError()
     })
   }
   var handleErrors = function (response) {
@@ -23,9 +23,10 @@ var app = (function () { // eslint-disable-line no-unused-vars
     }
     return response
   }
-  var updateUIFailure = function () {
+  var updateUIError = function () {
     var elError = document.createElement('li')
     elError.textContent = 'Information unavailable'
+    countriesList.innerHTML = ''
     countriesList.appendChild(elError)
   }
   var showCountriesList = function (response) {
@@ -33,7 +34,7 @@ var app = (function () { // eslint-disable-line no-unused-vars
     var dataArray = response
     for (var i = 0; i < dataArray.length; i++) {
       var name = document.createElement('li')
-      name.setAttribute('class', 'countries-list__list-item')
+      name.setAttribute('class', 'country')
       name.textContent = dataArray[i].name
 
       var capital = document.createElement('li')
@@ -49,7 +50,7 @@ var app = (function () { // eslint-disable-line no-unused-vars
       var flagImg = document.createElement('img')
       flagImg.setAttribute('class', 'country__img')
       flagImg.setAttribute('src', 'https://restcountries.eu/data/' + dataArray[i].alpha3Code.toLowerCase() + '.svg')
-      flagImg.setAttribute('alt','')
+      flagImg.setAttribute('alt', '')
       flag.appendChild(flagImg)
 
       var countryData = document.createElement('ul')
@@ -63,18 +64,13 @@ var app = (function () { // eslint-disable-line no-unused-vars
   }
   var initModule = function (container) {
     container.innerHTML =
-      '<div class="app">' +
-      '<h1 class="app__title">Explore Countries</h1>' +
+      '<h1>Explore Countries</h1>' +
       '<form id="search" class="search">' +
       '<input id="country-name" class="search__input" type="text" />' +
       '<button class="search__button" type="submit">Search</button>' +
       '</form>' +
-      '<div class="countries-list">' +
-      '<h2 class="countries-list__title">Countries list</h2>' +
-      '<ul id="countries" class="countries-list__list">' +
-      '</ul>' +
-      '</div>' +
-      '</div>'
+      '<ul id="countries" class="countries">' +
+      '</ul>'
     countriesList = document.getElementById('countries')
     document.getElementById('search').addEventListener('submit', searchCountries)
   }

@@ -2,38 +2,26 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-}
-.app__title {
   font-family: sans-serif;
 }
 .search {
-  font-family: sans-serif;
+  &__input {
+    font-size: 16px;
+  }
+  &__button {
+    font-size: 16px;
+  }
 }
-.search__input {
-  font-size: 16px;
-}
-.search__button {
-  font-size: 16px;
-}
-.countries-list {
-  font-family: sans-serif;
+.countries {
   text-align: center;
-}
-.countries-list__title {
-
-}
-.countries-list__list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2em 0 0;
   text-align: left;
 }
-.countries-list__list-item {
+.country {
   padding: 15px;
   border: 1px solid green;
-}
-.countries-list__list-item--is-empty {
-  border: none;
 }
 .country__img {
   border: 1px solid #ccc;
