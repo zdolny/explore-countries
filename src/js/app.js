@@ -17,25 +17,41 @@ var app = (function () { // eslint-disable-line no-unused-vars
       updateUIError()
     })
   }
+
   var handleErrors = function (response) {
     if (!response.ok) {
       throw Error(response.statusText)
     }
     return response
   }
+
   var updateUIError = function () {
     var elError = document.createElement('li')
     elError.textContent = 'Information unavailable'
     countriesList.innerHTML = ''
     countriesList.appendChild(elError)
   }
+
   var showCountriesList = function (response) {
     countriesList.innerHTML = ''
     var dataArray = response
     for (var i = 0; i < dataArray.length; i++) {
-      var name = document.createElement('li')
-      name.setAttribute('class', 'country')
+      var countryEl = document.createElement('li')
+      countryEl.setAttribute('class', 'country')
+
+      var countryMainInfo = document.createElement('div')
+      countryMainInfo.setAttribute('class', 'country__main-info')
+
+      var flag = document.createElement('img')
+      flag.setAttribute('class', 'country__img')
+      flag.setAttribute('src', 'https://restcountries.eu/data/' + dataArray[i].alpha3Code.toLowerCase() + '.svg')
+      flag.setAttribute('alt', '')
+
+      var name = document.createElement('h2')
+      name.setAttribute('class', 'country__name')
       name.textContent = dataArray[i].name
+
+      var countryData = document.createElement('ul')
 
       var capital = document.createElement('li')
       capital.textContent = 'Capital: ' + dataArray[i].capital
@@ -46,22 +62,19 @@ var app = (function () { // eslint-disable-line no-unused-vars
       var population = document.createElement('li')
       population.textContent = 'Population: ' + dataArray[i].population.toLocaleString('pl-PL')
 
-      var flag = document.createElement('li')
-      var flagImg = document.createElement('img')
-      flagImg.setAttribute('class', 'country__img')
-      flagImg.setAttribute('src', 'https://restcountries.eu/data/' + dataArray[i].alpha3Code.toLowerCase() + '.svg')
-      flagImg.setAttribute('alt', '')
-      flag.appendChild(flagImg)
+      countryEl.appendChild(countryMainInfo)
+      countryMainInfo.appendChild(flag)
+      countryMainInfo.appendChild(name)
 
-      var countryData = document.createElement('ul')
+      countryEl.appendChild(countryData)
       countryData.appendChild(capital)
       countryData.appendChild(area)
       countryData.appendChild(population)
-      countryData.appendChild(flag)
 
-      countriesList.appendChild(name).appendChild(countryData)
+      countriesList.appendChild(countryEl)
     }
   }
+
   var initModule = function (container) {
     container.innerHTML =
       '<h1>Explore Countries</h1>' +

@@ -1,29 +1,52 @@
+$main-bg: #fff;
+$main-txt: #000;
+$country-bg: #fff;
+$country-txt: #000;
+$flag-border: #ccc;
+
+body {
+  margin: 0;
+}
 .app {
   display: flex;
   flex-flow: column;
   align-items: center;
   font-family: sans-serif;
+  min-height: 100vh;
+  background-color: $main-bg;
+  color: $main-txt;
 }
 .search {
   &__input {
     font-size: 16px;
+    border: 1px solid #000;
   }
   &__button {
     font-size: 16px;
   }
 }
 .countries {
-  text-align: center;
   list-style: none;
   padding: 0;
-  margin: 2em 0 0;
+  margin: 2em auto 0;
+  width: 100%;
   text-align: left;
 }
 .country {
   padding: 15px;
-  border: 1px solid green;
-}
-.country__img {
-  border: 1px solid #ccc;
-  width: calc(100% - 2px);
+  margin: 5px;
+  background-color: $country-bg;
+  color: $country-txt;
+  &__main-info {
+    display: flex;
+    align-items: center;
+  }
+  &__name {
+    margin-left: 10px;
+  }
+  &__img {
+    border: 1px solid $flag-border;
+    width: 20vw;
+    max-width: 200px;
+  }
 }
