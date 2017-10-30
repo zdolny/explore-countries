@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "scripts": {
     "test": "standard",
-    "sass": "node-sass --output-style compressed -o dist/css src/scss"
+    "sass": "node-sass --output-style compressed --source-map true -o dist/css src/scss",
+    "watch": "watch 'npm run sass' src/",
+    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers 'last 2 versions' -r dist/css/*.css --map",
+    "build": "npm run sass | npm run autoprefixer > dist/css/app.css"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "exorcist": "^1.0.0",
     "node-sass": "^4.5.3",
-    "standard": "^10.0.3"
+    "postcss-cli": "^4.1.1",
+    "standard": "^10.0.3",
+    "watch": "^1.0.2"
   },
   "standard": {
     "globals": [
