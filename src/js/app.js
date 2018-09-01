@@ -50,8 +50,10 @@ var app = (function () { // eslint-disable-line no-unused-vars
     container.innerHTML =
       '<h1>Explore Countries</h1>' +
       '<form id="search" class="search">' +
-      '<input id="country-name" class="search__input" type="text" />' +
-      '<button class="search__button" type="submit">Search</button>' +
+      '<div class="input-group">' +
+      '<input id="country-name" class="search__input form-input" type="text" />' +
+      '<button class="search__button btn btn-primary input-group-btn" type="submit">Search</button>' +
+      '</div>' +
       '</form>' +
       '<ul id="countries" class="countries">' +
       '</ul>'

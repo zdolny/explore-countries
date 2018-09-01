@@ -14,15 +14,15 @@
 
   <script id="template" type="x-tmpl-mustache">
     {{#countries}}
-      <li class="country">
-        <div class="country__main-info">
+      <li class="country card">
+        <div class="country__header">
           <img class="country__img" src="https://restcountries.eu/data/{{#lower}}{{alpha3Code}}{{/lower}}.svg" alt="">
           <h2 class="country__name">{{name}}</h2>
         </div>
-        <ul>
-          <li>Capital: {{capital}}</li>
-          <li>Area: {{area}} km²</li>
-          <li>Population: {{population}}</li>
+        <ul class="country__info">
+          <li class="country__item">Capital: <strong>{{capital}}</strong></li>
+          <li class="country__item">Area: <strong>{{area}} km²</strong></li>
+          <li class="country__item">Population: <strong>{{population}}</strong></li>
         </ul>
       </li>
     {{/countries}}

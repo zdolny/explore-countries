@@ -11,7 +11,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "exorcist": "^1.0.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.3",
     "postcss-cli": "^4.1.1",
     "standard": "^10.0.3",
     "watch": "^1.0.2"
@@ -23,5 +23,8 @@
     "env": {
       "browser": 1
     }
+  },
+  "dependencies": {
+    "spectre.css": "^0.5.3"
   }
 }

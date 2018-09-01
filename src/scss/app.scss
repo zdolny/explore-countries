@@ -1,11 +1,14 @@
+@import "node_modules/spectre.css/src/spectre";
+
 $main-bg: #fff;
-$main-txt: #000;
+$main-text: #000;
 $country-bg: #fff;
-$country-txt: #000;
-$flag-border: #ccc;
+$country-text: #000;
+$main-border: #c4c7cd;
 
 body {
   margin: 0;
+  padding: 20px;
 }
 .app {
   display: flex;
@@ -14,12 +17,11 @@ body {
   font-family: sans-serif;
   min-height: 100vh;
   background-color: $main-bg;
-  color: $main-txt;
+  color: $main-text;
 }
 .search {
   &__input {
     font-size: 16px;
-    border: 1px solid #000;
   }
   &__button {
     font-size: 16px;
@@ -31,22 +33,34 @@ body {
   margin: 2em auto 0;
   width: 100%;
   text-align: left;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 .country {
-  padding: 15px;
-  margin: 5px;
-  background-color: $country-bg;
-  color: $country-txt;
-  &__main-info {
+  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+  margin: 0;
+  &__header {
     display: flex;
     align-items: center;
-  }
-  &__name {
-    margin-left: 10px;
+    padding: 15px;
+    border-bottom: $border-width solid $border-color;
   }
   &__img {
-    border: 1px solid $flag-border;
-    width: 20vw;
-    max-width: 200px;
+    border: 1px solid $border-color;
+    max-width: 140px;
+  }
+  &__name {
+    font-size: 22px;
+    margin: 0 0 0 10px;
+  }
+  &__info {
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+    line-height: 1.3;
+  }
+  &__item {
+    margin: 0;
   }
 }
