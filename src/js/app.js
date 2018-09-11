@@ -1,13 +1,17 @@
 const app = (() => { // eslint-disable-line no-unused-vars
   'use strict'
 
-  const url = 'https://restcountries.eu/rest/v1/name/'
   let countriesList = {}
+  let url = ''
 
   const searchCountries = function (e) {
     e.preventDefault()
     let countryName = document.getElementById('country-name').value
-    if (!countryName.length) countryName = 'Poland'
+    if (!countryName.length) {
+      url = 'https://restcountries.eu/rest/v2/all/'
+    } else {
+      url = 'https://restcountries.eu/rest/v2/name/'
+    }
 
     fetch(url + countryName).then(handleErrors).then(function (response) {
       return (response.json())
