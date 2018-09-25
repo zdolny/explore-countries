@@ -1,8 +1,8 @@
-((callback) => {
-  if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading') {
-    callback()
+((fn) => {
+  if (document.readyState !== 'loading') {
+    fn()
   } else {
-    document.addEventListener('DOMContentLoaded', callback)
+    document.addEventListener('DOMContentLoaded', fn)
   }
 })(() => {
   app.initModule(document.getElementById('app'))
