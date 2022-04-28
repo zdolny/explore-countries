@@ -6,20 +6,24 @@ const app = (() => { // eslint-disable-line no-unused-vars
 
   const searchCountries = function (e) {
     e.preventDefault()
-    let countryName = document.getElementById('country-name').value
+    const countryName = document.getElementById('country-name').value
     if (!countryName.length) {
-      url = 'https://restcountries.eu/rest/v2/all/'
+      url = 'https://restcountries.com/v3.1/all'
     } else {
-      url = 'https://restcountries.eu/rest/v2/name/'
+      url = 'https://restcountries.com/v3.1/name/'
     }
 
-    fetch(url + countryName).then(handleErrors).then(function (response) {
-      return (response.json())
-    }).then(function (response) {
-      showCountriesList(response)
-    }).catch(function () {
-      updateUIError()
-    })
+    window.fetch(url + countryName)
+      .then(handleErrors)
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (response) {
+        showCountriesList(response)
+      })
+      .catch(function () {
+        updateUIError()
+      })
   }
 
   const handleErrors = function (response) {
@@ -63,7 +67,9 @@ const app = (() => { // eslint-disable-line no-unused-vars
       </ul>
     `
     countriesList = document.getElementById('countries')
-    document.getElementById('search').addEventListener('submit', searchCountries)
+    document
+      .getElementById('search')
+      .addEventListener('submit', searchCountries)
   }
 
   return {
