@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "test": "standard",
+    "test:fix": "standard --fix",
     "sass": "node-sass --output-style compressed --source-map true -o dist/css src/scss",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers 'last 2 versions' -r dist/css/*.css --map",
     "build": "npm run sass | npm run autoprefixer > dist/css/app.css"
