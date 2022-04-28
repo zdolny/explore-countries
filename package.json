@@ -9,12 +9,12 @@
     "build": "npm run sass | npm run autoprefixer > dist/css/app.css"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
+    "autoprefixer": "^10.4.5",
     "exorcist": "^2.0.0",
     "node-sass": "^7.0.1",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
-    "standard": "^16.0.4",
+    "standard": "^17.0.0",
     "watch": "^1.0.2"
   },
   "standard": {
