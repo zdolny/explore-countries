@@ -12,7 +12,7 @@
     "autoprefixer": "^10.4.5",
     "exorcist": "^2.0.0",
     "node-sass": "^7.0.1",
-    "postcss": "^8.4.12",
+    "postcss": "^8.4.31",
     "postcss-cli": "^9.1.0",
     "standard": "^17.0.0"
   },
